@@ -79,8 +79,14 @@ static char *predef_args[] = {
 #ifdef BR_OMIT_LOCK_PREFIX
 	"-Wa,-momit-lock-prefix=yes",
 #endif
-#ifdef BR_NO_FUSED_MADD
-	"-mno-fused-madd",
+#ifdef BR2_TOOLCHAIN_GCC_AT_LEAST_4_6
+	#ifdef BR_FP_CONTRACT_OFF
+		"-ffp-contract=off",
+	#endif
+#else
+	#ifdef BR_NO_FUSED_MADD
+		"-mno-fused-madd",
+	#endif
 #endif
 #ifdef BR_BINFMT_FLAT
 	"-Wl,-elf2flt",
