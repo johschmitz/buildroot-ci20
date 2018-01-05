@@ -1,6 +1,8 @@
 # Buildroot ci20
 
-A super stripped down MIPS Creator ci20 Web Radio image
+A super stripped down MIPS Creator ci20 webradio image, plug in ethernet and a
+headphone to listen to webradio streams from mpd. The streaming is
+automatically started through mpc in an init script.
 
 ## Introduction
 
