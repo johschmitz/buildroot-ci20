@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Sanity checks
+test -f /usr/bin/amixer || exit 0
+
+start() {
+    printf "Unmuting soundcard\n"
+    /usr/bin/amixer set -c 0 Master unmute;
+    /usr/bin/amixer set -c 0 Headphone unmute;
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        #               stop
+        ;;
+    restart|reload)
+        stop
+        sleep 1
+        start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
